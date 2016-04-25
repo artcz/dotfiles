@@ -1,0 +1,70 @@
+fpath=( "$HOME/.zfunctions" $fpath)
+path=($path "$HOME/bin/")
+autoload -U promptinit && promptinit
+#prompt pure
+export LC_ALL="en_US.utf8"
+
+# HISTORY
+export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+setopt hist_ignore_dups
+setopt appendhistory
+
+bindkey -v
+bindkey '^r' history-incremental-search-backward
+
+alias ls='ls --color=auto'
+alias l='ls -a --color=auto'
+alias ll='ls -la --color=auto'
+alias lsd='ls -ld *(-/DN)'
+alias t='todo'
+alias grep='grep --color=auto'
+alias cp='cp -i'
+alias mv='mv -i'
+alias define='which'
+alias ',s'='store'
+alias vs='vagrant ssh'
+alias g='git'
+alias ipy='ipython'
+alias asd='ipython'
+alias ,asd='ipython'
+alias mplayer='mpv'
+
+# fixme, use something more generic than higlight? maybe pygmentize?
+alias ccat='highlight -O ansi'
+
+alias ...='../..'
+alias ....='../../..'
+alias .....='../../../..'
+alias ......='../../../../../'
+
+alias -g G='| grep -i --color=auto'
+alias -g W='| wc -l'
+
+alias ydp='ydpdict'
+alias ack='ack-grep' # for ubuntu
+
+function md {
+    mkdir -p ${1}; cd ${1}
+}
+
+setopt autocd
+setopt correct
+unset RUBYOPT
+
+export USER_PROMPT_COLOR="green"
+export PATH_PROMPT_COLOR="red"
+
+
+# source
+
+. "$HOME/.zfunctions/prompt.zsh"
+. "$HOME/.zfunctions/completion.zsh"
+. "$HOME/.zfunctions/remote_hosts"
+. "$HOME/.zfunctions/local_development"
+. "$HOME/.zfunctions/git.zsh"
+. "$HOME/.zfunctions/helpers.zsh"
+. "$HOME/.zfunctions/python.zsh"
+. "$HOME/.zfunctions/monitor_management.zsh"
+. "$HOME/bin/z.sh"
