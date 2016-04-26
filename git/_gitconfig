@@ -1,0 +1,50 @@
+[user]
+	email = <insert email here>
+	name = Artur Czepiel
+
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold  blue)<%an>%Creset' --abbrev-commit
+	d = difftool
+	co = checkout
+	unstage = reset HEAD --
+	last = log -1 --stat HEAD
+	branches = branch
+	tags = tag
+	stashes = stash list
+	unadd = reset HEAD
+	uncommit = reset --soft HEAD^
+
+[diff]
+	tool = vimdiff
+
+[difftool]
+	prompt = false
+
+[push]
+	default = simple
+
+[merge]
+	tool = vimdiff
+    conflictstyle = diff3
+
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow 
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
