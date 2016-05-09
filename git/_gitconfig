@@ -12,6 +12,7 @@
     tags = tag
     stashes = stash list
 
+    drop = reset --hard
     unstage = reset HEAD --
     unadd = reset HEAD
     uncommit = reset --soft HEAD^
