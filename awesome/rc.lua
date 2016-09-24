@@ -13,8 +13,8 @@ local menubar = require("menubar")
 
 -- transparency
 -- awful.util.spawn_with_shell("unagi &")
-awful.util.spawn_with_shell("volumeicon &")
-awful.util.spawn_with_shell("nm-applet &")
+-- awful.util.spawn_with_shell("volumeicon &")
+-- awful.util.spawn_with_shell("nm-applet &")
 awful.util.spawn_with_shell("setxkbmap plantoni -option ctrl:nocaps")
 
 -- {{{ Error handling
@@ -45,8 +45,6 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/home/a/.config/awesome/forked_zenburn.lua")
--- beautiful.wallpaper = "/home/a/Pictures/wallpaper_milkiway.jpg"
--- beautiful.wallpaper = "/home/a/Pictures/zakopane.jpg"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -202,6 +200,20 @@ for s = 1, screen.count() do
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
+    -- battery widget CUSTOM
+    battery1widget = wibox.widget.textbox()
+    battery1widget:set_text(" | Battery | ")
+    battery1widgettimer = timer({ timeout = 5 })
+    battery1widgettimer:connect_signal("timeout",
+    function()
+        fh = assert(io.popen("/home/a/bin/,batstatus", "r"))
+        battery1widget:set_text(" |" .. fh:read("*l") .. " | ")
+        fh:close()
+    end
+    )
+    battery1widgettimer:start()
+    right_layout:add(battery1widget)
+
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
     layout:set_left(left_layout)
@@ -263,6 +275,7 @@ globalkeys = awful.util.table.join(
     awful.key({}, "#123", function () awful.util.spawn("amixer -q sset PCM 2dB+") end),
     awful.key({}, "#122", function () awful.util.spawn("amixer -q sset PCM 2dB-") end),
     awful.key({}, "XF86AudioMute", function () awful.util.spawn("amixer -q -D pulse sset Master toggle") end),
+    awful.key({}, "XF86AudioMicMute", function () awful.util.spawn("amixer set Capture toggle") end),
 
     awful.key({ modkey,           }, "v", function () awful.util.spawn(terminal) end),
     awful.key({ modkey,           }, "r", function () awful.util.spawn("konsole") end),
