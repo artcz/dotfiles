@@ -55,7 +55,7 @@ set undofile
 
 " ================ Indentation ======================
 
-set autoindent
+set noautoindent
 " this will cause weird stuff with python, like moving new comments to first
 " column, and blocking '<<' and '>>' on comments. Conclusion: don't use
 " smartindent
@@ -117,6 +117,7 @@ set cursorline
 set nocursorcolumn
 map <F11> :set hls!<Bar>set hls?<CR>
 map <F10> :set paste!<Bar>set paste?<CR>
+map <F4>  :NERDTreeToggle<CR>:TagbarToggle<CR>
 map <F9>  :set wrap!<Bar>set wrap?<CR>
 nnoremap <C-f> :CtrlPTag<cr>
 set textwidth=79
@@ -130,6 +131,7 @@ autocmd Filetype htmldjango setlocal expandtab tw=31337
 autocmd Filetype yaml setlocal expandtab ts=2 sw=2 sts=2 tw=120
 autocmd Filetype yml setlocal expandtab ts=2 sw=2 sts=2 tw=120
 " autocmd BufWritePre *.py Isort
+autocmd BufWritePre *.py PyCoverageHighlight
 
 set ssop-=options
 set ssop-=folds
@@ -147,3 +149,14 @@ let g:NERDSpaceDelims = 1
 cnoreabbrev W w
 " E opens as well
 cnoreabbrev E e
+
+set mouse=a
+
+" quicksave
+" this is game-inspired hack. Press f6 to make a 'quicksave' commit.
+nnoremap <F6> :!git add . && git commit -a -m "quisksave"
+" and quickload
+nnoremap <F7> :!git checkout -- .
+
+" search for highlighted text with //
+vnoremap // y/<C-R>"<CR>
