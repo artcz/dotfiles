@@ -11,6 +11,12 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
+-- transparency
+-- awful.util.spawn_with_shell("unagi &")
+awful.util.spawn_with_shell("volumeicon &")
+awful.util.spawn_with_shell("nm-applet &")
+awful.util.spawn_with_shell("setxkbmap plantoni -option ctrl:nocaps")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -39,6 +45,8 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/home/a/.config/awesome/forked_zenburn.lua")
+-- beautiful.wallpaper = "/home/a/Pictures/wallpaper_milkiway.jpg"
+-- beautiful.wallpaper = "/home/a/Pictures/zakopane.jpg"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -180,7 +188,7 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s })
+    mywibox[s] = awful.wibox({ position = "top", screen = s})
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
@@ -201,6 +209,7 @@ for s = 1, screen.count() do
     layout:set_right(right_layout)
 
     mywibox[s]:set_widget(layout)
+    -- mywibox[s].visible = false
 end
 -- }}}
 
@@ -214,6 +223,11 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
+    -- hide wibox
+    awful.key({ modkey, "Shift" }, "b", function ()
+        mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
+    end),
+
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
@@ -228,13 +242,13 @@ globalkeys = awful.util.table.join(
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
         end),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end),
+    -- awful.key({ modkey,           }, "w", function () mymainmenu:show() end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
-    -- awful.key({ modkey,           }, "h", function () awful.screen.focus_relative( 1) end),
-    -- awful.key({ modkey,           }, "l", function () awful.screen.focus_relative(-1) end),
+    awful.key({ modkey,           }, "h", function () awful.screen.focus_relative(-1) end),
+    awful.key({ modkey,           }, "l", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
     awful.key({ modkey,           }, "Tab",
         function ()
@@ -252,9 +266,11 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey,           }, "v", function () awful.util.spawn(terminal) end),
     awful.key({ modkey,           }, "r", function () awful.util.spawn("konsole") end),
+    awful.key({ modkey,           }, "t", function () awful.util.spawn("note_taking_app") end),
     awful.key({ modkey,           }, "e", function () awful.util.spawn("emelfm2") end),
     awful.key({ modkey,           }, "d", function () awful.util.spawn("dolphin") end),
-    awful.key({ modkey,           }, "l", function () awful.util.spawn("slock") end),
+    awful.key({ modkey,           }, "w", function () awful.util.spawn("ipython qtconsole") end),
+    awful.key({ modkey,           }, "F12", function () awful.util.spawn("slock") end),
     awful.key({                   }, "Print", function () awful.util.spawn("ksnapshot") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift", "Control" }, "q", awesome.quit),
@@ -362,9 +378,19 @@ awful.rules.rules = {
                      focus = awful.client.focus.filter,
                      keys = clientkeys,
                      buttons = clientbuttons } },
+    { rule = { class = "Yakuake" },
+      properties = { floating = true } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { class = "pinentry" },
+      properties = { floating = true } },
+    { rule = { class = "Gvim" },
+      properties = { size_hints_honor = false } },
+    { rule = { class = "terminology" },
+      properties = { size_hints_honor = false } },
+    { rule = { class = "kruler" },
+      properties = { floating = true } },
+    { rule = { class = "Kruler" },
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
@@ -377,6 +403,10 @@ awful.rules.rules = {
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c, startup)
+
+    -- disble hinting (no space between windows)
+    -- c.size_hints_honor = false
+
     -- Enable sloppy focus
     c:connect_signal("mouse::enter", function(c)
         if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
@@ -440,6 +470,9 @@ client.connect_signal("manage", function (c, startup)
         layout:set_middle(middle_layout)
 
         awful.titlebar(c):set_widget(layout)
+
+        -- hide titlebars
+        awful.key({modkey, "Shift"}, "t", function(c) awful.titlebar.toggle(c) end)
     end
 end)
 
