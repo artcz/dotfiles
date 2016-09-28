@@ -119,6 +119,8 @@ map <F11> :set hls!<Bar>set hls?<CR>
 map <F10> :set paste!<Bar>set paste?<CR>
 map <F4>  :NERDTreeToggle<CR>:TagbarToggle<CR>
 map <F9>  :set wrap!<Bar>set wrap?<CR>
+nnoremap <F3> :diffthis<CR>
+nnoremap <S-F3> :diffoff<CR>
 nnoremap <C-f> :CtrlPTag<cr>
 set textwidth=79
 
@@ -160,3 +162,5 @@ nnoremap <F7> :!git checkout -- .
 
 " search for highlighted text with //
 vnoremap // y/<C-R>"<CR>
+
+command Clone vnew | put =getbufline('#', 1, '$') | 1d_
