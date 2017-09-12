@@ -1,0 +1,9 @@
+#!/bin/bash
+
+(echo "admin";
+ sleep 1;
+ echo "admin";
+ sleep 1;
+ echo "lanhosts show all";
+ sleep 1;
+ echo "quit") | telnet 192.168.1.1
