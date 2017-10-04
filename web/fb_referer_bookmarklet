@@ -1,0 +1,1 @@
+javascript:window.location.href='https://m.facebook.com/l.php?u='+encodeURIComponent(window.location.href);
