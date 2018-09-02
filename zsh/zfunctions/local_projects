@@ -1,0 +1,16 @@
+function np {
+# usage: np project_name
+
+    project_name=$1
+    path_variable_export_name=$(echo $1 | tr a-z A-Z)
+    project_path="$HOME/P/$project_name"
+
+    md $project_path
+    git init .
+
+    functions_path="$HOME/.zfunctions/local_projects"
+    echo "\n" >> $functions_path
+    echo "export $path_variable_export_name=\"$project_path\"" 2>&1 | tee -a $functions_path
+    echo "function $project_name { cd \$$path_variable_export_name }" 2>&1 | tee -a $functions_path
+
+}
