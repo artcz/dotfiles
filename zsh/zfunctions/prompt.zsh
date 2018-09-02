@@ -33,7 +33,7 @@ function prompt_prs_get_color {
     && prompt_prs_username="→ $USER@$HOST" || prompt_prs_username="$USER"
 
 [[ -n "$USER_PROMPT_COLOR" ]] \
-    && USER_PROMPT="%B%F{$USER_PROMPT_COLOR}[%D{%H:%M:%S}][$prompt_prs_username]%f%b"\
+    && USER_PROMPT="%B%F{$USER_PROMPT_COLOR}[%D{%d/%m %H:%M:%S}][$prompt_prs_username]%f%b"\
     || USER_PROMPT=$(prompt_prs_get_color $prompt_prs_username)
 
 [[ -n $PATH_PROMPT_COLOR ]] || PATH_PROMPT_COLOR="%{$fg_bold[yellow]%}"
