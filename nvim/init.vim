@@ -27,6 +27,10 @@ Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 Plug 'https://github.com/nvie/vim-flake8'
 Plug 'vim-scripts/indentpython.vim'
 " Plug 'Valloric/YouCompleteMe'
+" Plug 'ruanyl/vim-gh-line'
+Plug 'tyru/open-browser.vim'
+Plug 'tyru/open-browser-github.vim'
+
 
 call plug#end()
 
