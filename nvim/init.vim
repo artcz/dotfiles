@@ -48,6 +48,7 @@ set nu
 set hlsearch
 set incsearch
 colorscheme desert
+colorscheme OceanicNext
 " 4 spaces not tabs
 set sw=4
 set ts=4
