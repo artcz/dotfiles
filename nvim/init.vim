@@ -30,6 +30,7 @@ Plug 'vim-scripts/indentpython.vim'
 " Plug 'ruanyl/vim-gh-line'
 Plug 'tyru/open-browser.vim'
 Plug 'tyru/open-browser-github.vim'
+Plug 'tpope/vim-fugitive'
 
 
 call plug#end()
