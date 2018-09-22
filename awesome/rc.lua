@@ -15,7 +15,7 @@ local menubar = require("menubar")
 -- awful.util.spawn_with_shell("unagi &")
 -- awful.util.spawn_with_shell("volumeicon &")
 -- awful.util.spawn_with_shell("nm-applet &")
-awful.util.spawn_with_shell("setxkbmap plantoni -option ctrl:nocaps")
+awful.util.spawn_with_shell("~/bin/xset-fav-settings")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -44,10 +44,11 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/home/a/.config/awesome/forked_zenburn.lua")
+beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
+screenshot_app = 'spectacle' -- could also be ksnapshot
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -101,7 +102,7 @@ myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
-   { "quit", awesome.quit }
+   { "quit", function() awesome.quit() end }
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
@@ -284,7 +285,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "d", function () awful.util.spawn("dolphin") end),
     awful.key({ modkey,           }, "w", function () awful.util.spawn("ipython qtconsole") end),
     awful.key({ modkey,           }, "F12", function () awful.util.spawn("slock") end),
-    awful.key({                   }, "Print", function () awful.util.spawn("ksnapshot") end),
+    awful.key({                   }, "Print", function () awful.util.spawn(screenshot_app) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift", "Control" }, "q", awesome.quit),
 
