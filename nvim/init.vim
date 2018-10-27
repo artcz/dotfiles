@@ -31,6 +31,7 @@ Plug 'vim-scripts/indentpython.vim'
 Plug 'tyru/open-browser.vim'
 Plug 'tyru/open-browser-github.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'rstacruz/sparkup'
 
 
 call plug#end()
