@@ -32,6 +32,7 @@ Plug 'tyru/open-browser.vim'
 Plug 'tyru/open-browser-github.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'rstacruz/sparkup'
+Plug 'junegunn/fzf.vim'
 
 
 call plug#end()
