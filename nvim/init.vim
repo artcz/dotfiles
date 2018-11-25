@@ -32,6 +32,7 @@ Plug 'tyru/open-browser.vim'
 Plug 'tyru/open-browser-github.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'rstacruz/sparkup'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 
@@ -61,6 +62,7 @@ set sts=4
 " Keep undo history across sessions, by storing in a file.
 set undodir=~/.vim/backups
 set undofile
+set noswapfile
 
 
 " Display tabs and trailing spaces visually
@@ -114,6 +116,11 @@ nmap <silent> ,qc :cclose<CR>
 "" source vim config from current vile (,vim reload)
 nmap <silent> ,vr :so %<CR>
 
+""" fzf bindings
+nmap <silent> ,f :Files<CR>
+nmap <silent> ,t :Tags<CR>
+nmap <silent> ,b :Buffers<CR>
+
 """ highlights
 nmap <unique> <silent> <Leader>a <Plug>MarkSet
 vmap <unique> <silent> <Leader>a <Plug>MarkSet
@@ -134,3 +141,10 @@ let g:flake8_show_in_file=1
 set termguicolors
 " prevent the konsole font size problem
 set guicursor=
+
+" Custom settings per project
+set exrc
+set secure
+
+set autoread
+au FocusGained * :checktime
