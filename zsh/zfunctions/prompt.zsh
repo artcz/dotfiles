@@ -40,5 +40,5 @@ function prompt_prs_get_color {
 PATH_PROMPT="%B%F{$PATH_PROMPT_COLOR}[%~]%f%b"
 RESET="%{$reset_color%}"
 
-PROMPT="${USER_PROMPT}${PATH_PROMPT}${RESET} "
+PROMPT="$(echo -n '\a')${USER_PROMPT}${PATH_PROMPT}${RESET} "
 PS1=$PROMPT

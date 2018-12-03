@@ -44,7 +44,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+beautiful.init("~/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -91,7 +91,7 @@ tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
     tags[s] = awful.tag({
-        "vim", "www", "term", "im", "mail", "misc", 7, 8, "term2"
+        1, 2, 3, 4, 5, 6, 7, 8, 9
     }, s, layouts[2])
 end
 -- }}}
@@ -207,7 +207,7 @@ for s = 1, screen.count() do
     battery1widgettimer = timer({ timeout = 5 })
     battery1widgettimer:connect_signal("timeout",
     function()
-        fh = assert(io.popen("/home/a/bin/,batstatus", "r"))
+        fh = assert(io.popen("/home/artur/bin/,batstatus", "r"))
         battery1widget:set_text(" |" .. fh:read("*l") .. " | ")
         fh:close()
     end
@@ -328,8 +328,9 @@ clientkeys = awful.util.table.join(
         end),
     awful.key({ modkey,           }, "m",
         function (c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c.maximized_vertical   = not c.maximized_vertical
+            c.maximized            = not c.maximized
+            --c.maximized_horizontal = not c.maximized_horizontal
+            --c.maximized_vertical   = not c.maximized_vertical
         end)
 )
 
@@ -420,6 +421,7 @@ client.connect_signal("manage", function (c, startup)
 
     -- disble hinting (no space between windows)
     -- c.size_hints_honor = false
+    awful.client.movetoscreen(c, mouse.screen)
 
     -- Enable sloppy focus
     c:connect_signal("mouse::enter", function(c)

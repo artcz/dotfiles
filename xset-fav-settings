@@ -1,3 +1,3 @@
 setxkbmap pl -option ctrl:nocaps
-xset r rate 200 40  # keyboard repeat rate (after 200ms delay repeat 40 times)
-xset m 8 15         # accelerate 7 times after 15 pixels
+xset r rate 200 50  # keyboard repeat rate (after 200ms delay repeat 40 times)
+xset m 7 15         # accelerate 7 times after 15 pixels

@@ -38,6 +38,9 @@ apt install \
 	kde-spectacle \
 	gwenview \
 	whois \
+	unagi \
+    cloc \
+
 
 pip2 install pip --upgrade
 pip3 install pip --upgrade
