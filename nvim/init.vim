@@ -44,6 +44,10 @@ if vim_plug_just_installed
 endif
 
 
+" for fuzzy finder
+set rtp+=~/.fzf
+
+
 " Bascics
 " =======
 "
@@ -54,6 +58,7 @@ set incsearch
 colorscheme desert
 colorscheme OceanicNext
 " 4 spaces not tabs
+set expandtab
 set sw=4
 set ts=4
 set sts=4
@@ -120,10 +125,13 @@ nmap <silent> ,vr :so %<CR>
 nmap <silent> ,f :Files<CR>
 nmap <silent> ,t :Tags<CR>
 nmap <silent> ,b :Buffers<CR>
+nmap <silent> ,g :Ag<CR>
 
 """ highlights
 nmap <unique> <silent> <Leader>a <Plug>MarkSet
 vmap <unique> <silent> <Leader>a <Plug>MarkSet
+
+vnoremap B :!Black -<CR>
 
 set splitbelow
 set splitright
@@ -142,9 +150,4 @@ set termguicolors
 " prevent the konsole font size problem
 set guicursor=
 
-" Custom settings per project
-set exrc
-set secure
-
-set autoread
-au FocusGained * :checktime
+source ~/.nvimrc.local
