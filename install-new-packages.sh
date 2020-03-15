@@ -40,6 +40,8 @@ apt install \
 	whois \
 	unagi \
     cloc \
+    tmux \
+    expect \
 
 
 pip2 install pip --upgrade

@@ -92,7 +92,7 @@ for s = 1, screen.count() do
     -- Each screen has its own tag table.
     tags[s] = awful.tag({
         1, 2, 3, 4, 5, 6, 7, 8, 9
-    }, s, layouts[2])
+    }, s, layouts[1])
 end
 -- }}}
 
@@ -277,10 +277,12 @@ globalkeys = awful.util.table.join(
     awful.key({}, "#122", function () awful.util.spawn("amixer -q sset PCM 2dB-") end),
     awful.key({}, "XF86AudioMute", function () awful.util.spawn("amixer -q -D pulse sset Master toggle") end),
     awful.key({}, "XF86AudioMicMute", function () awful.util.spawn("amixer set Capture toggle") end),
+    awful.key({}, "XF86MonBrightnessUp", function () awful.util.spawn("sudo /home/artur/bin/,lux plus") end),
+    awful.key({}, "XF86MonBrightnessDown", function () awful.util.spawn("sudo /home/artur/bin/,lux minus") end),
 
     awful.key({ modkey,           }, "v", function () awful.util.spawn(terminal) end),
     awful.key({ modkey,           }, "r", function () awful.util.spawn("konsole") end),
-    awful.key({ modkey,           }, "t", function () awful.util.spawn("note_taking_app") end),
+    awful.key({ modkey,           }, "t", function () awful.util.spawn("commonplace_terminal") end),
     awful.key({ modkey,           }, "e", function () awful.util.spawn("emelfm2") end),
     awful.key({ modkey,           }, "d", function () awful.util.spawn("dolphin") end),
     awful.key({ modkey,           }, "w", function () awful.util.spawn("ipython qtconsole") end),
@@ -300,7 +302,8 @@ globalkeys = awful.util.table.join(
 
     -- Prompt
     -- awful.key({ modkey },            "space",     function () mypromptbox[mouse.screen]:run() end),
-    awful.key({ modkey },            "space",     function () menubar.show() end),
+    -- awful.key({ modkey },            "space",     function () menubar.show() end),
+     awful.key({ modkey },            "space",     function () awful.util.spawn("dmenu_run") end),
 
     awful.key({ modkey }, "x",
               function ()
@@ -495,3 +498,7 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+
+screen.connect_signal("removed", awesome.restart)
+screen.connect_signal("added", awesome.restart)
