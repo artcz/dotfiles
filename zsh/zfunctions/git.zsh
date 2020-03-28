@@ -2,6 +2,7 @@ alias c='git commit -m '
 alias s='git status'
 alias co='git checkout'
 alias gd='git diff'
+alias gdc='git diff --cached'
 alias amend='git commit --amend'
 
 function ,gp {

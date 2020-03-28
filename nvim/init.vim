@@ -119,8 +119,6 @@ nnoremap <silent> <C-j> <C-w>j
 nnoremap <silent> <C-k> <C-w>k
 nnoremap <silent> <C-l> <C-w>l
 
-nnoremap <silent> <C-l> <C-w>l
-
 "" Splits
 nnoremap <silent> vv <C-w>v
 nnoremap <silent> ss <C-w>s
@@ -143,16 +141,20 @@ vmap <silent> <Leader>a <Plug>MarkSet
 nmap <space>a <Plug>MarkSet
 vmap <space>a <Plug>MarkSet
 
-
 set splitbelow
 set splitright
 
 
 " Filetypes
 " =========
+
+" Json
+autocmd Filetype json vnoremap <silent> B :!python3 -m json.tool -<CR>
+
 " Python
 autocmd Filetype python setlocal expandtab ts=4 sw=4 sts=4 tw=79
 autocmd BufWritePost *.py call Flake8()
+autocmd Filetype python vnoremap <silent> i :!isort -<CR>
 let g:flake8_show_in_file=1
 autocmd Filetype python vnoremap B :!Black -<CR>
 autocmd Filetype python nnoremap <space>B :!isort %<CR>:!black -q %<CR>:e %<CR>

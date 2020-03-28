@@ -38,6 +38,7 @@ apt install \
 	kde-spectacle \
 	gwenview \
 	whois \
+    clipit \
 	unagi \
     cloc \
     tmux \

@@ -30,6 +30,8 @@ alias ipy='ipython'
 alias asd='ipython'
 alias ,asd='ipython'
 alias mplayer='mpv'
+alias v='nvim -S .vimrc'
+alias v.='nvim . -S .vimrc'
 
 # fixme, use something more generic than higlight? maybe pygmentize?
 alias ccat='highlight -O ansi'
@@ -44,6 +46,7 @@ alias -g W='| wc -l'
 
 alias ydp='ydpdict'
 alias ack='ack-grep' # for ubuntu
+alias eix='apt search' # for ubuntu
 
 function md {
     mkdir -p ${1}; cd ${1}
@@ -60,11 +63,13 @@ export PATH_PROMPT_COLOR="red"
 # source
 
 . "$HOME/.zfunctions/prompt.zsh"
-. "$HOME/.zfunctions/completion.zsh"
-. "$HOME/.zfunctions/remote_hosts"
+# . "$HOME/.zfunctions/completion.zsh"
+# . "$HOME/.zfunctions/remote_hosts"
 . "$HOME/.zfunctions/local_projects"
 . "$HOME/.zfunctions/git.zsh"
 . "$HOME/.zfunctions/helpers.zsh"
 . "$HOME/.zfunctions/python.zsh"
-. "$HOME/.zfunctions/monitor_management.zsh"
-. "$HOME/bin/z.sh"
+# . "$HOME/.zfunctions/monitor_management.zsh"
+# . "$HOME/bin/z.sh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
