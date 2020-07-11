@@ -56,6 +56,12 @@ setopt autocd
 setopt correct
 unset RUBYOPT
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
+
 export USER_PROMPT_COLOR="green"
 export PATH_PROMPT_COLOR="red"
 
