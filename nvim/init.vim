@@ -34,6 +34,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'rstacruz/sparkup'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'pseewald/vim-anyfold'
 
 " experimenting with coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -237,6 +238,10 @@ autocmd Filetype text let @t = "o[ ] (created: <esc>:r!date<CR>kJA)<esc>F]a"
 autocmd Filetype text set tw=999999 nowrap
 autocmd Filetype text syn match celComment "\[x\].*$"
 autocmd Filetype text hi def link celComment Comment
+
+autocmd Filetype text AnyFoldActivate  " better folding for nested lists
+autocmd Filetype text set foldlevel=0
+autocmd Filetype text hi Folded term=underline
 
 " quicksave
 " this is game-inspired hack. Press f3 to make a 'quicksave' commit.
