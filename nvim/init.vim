@@ -39,6 +39,9 @@ Plug 'pseewald/vim-anyfold'
 " experimenting with coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Tabularize, markdowns, etc
+Plug 'godlygeek/tabular'
+
 
 call plug#end()
 
@@ -245,16 +248,15 @@ autocmd Filetype text hi Folded term=underline
 
 " quicksave
 " this is game-inspired hack. Press f3 to make a 'quicksave' commit.
-nnoremap <F3>   :!git add % && git commit -m "quisksave %"
 
 " Double the same bind, becase shift-f3 mostly doesn't work in terminals
-nnoremap <S-F3>      :!git add . && git commit -m "quisksave"
-nnoremap <space><F3> :!git add . && git commit -m "quisksave"
+nnoremap <F3>        : !git add % && git commit -m "quisksave %"
+nnoremap <S-F3>      : !git add . && git commit -m "quisksave"
+nnoremap <space><F3> : !git add . && git commit -m "quisksave"
 
-nnoremap <F4>   :!git status<CR>
-nnoremap <space><F4>   :!git push
-" and quickload – f5 because refresh -- aditional space to make it harder to press
-nnoremap <space><F5> :!git checkout -- .
+nnoremap <F4>        : !git status<CR>
+nnoremap <space><F4> : !git push
+nnoremap <space><F5> : !git checkout -- .
 
 " Open file manager that will allow pasting in and downloading files.
 " %:p:h means 'head of the path of current file' ie. a directory of currently
