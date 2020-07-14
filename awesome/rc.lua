@@ -316,8 +316,6 @@ globalkeys = gears.table.join(
               end,
               {description = "restore minimized", group = "client"}),
 
-    awful.key({ modkey },            "space",     function () awful.util.spawn("dmenu_run") end),
-
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run {
