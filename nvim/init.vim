@@ -41,6 +41,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Tabularize, markdowns, etc
 Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
+" Journal
+Plug 'junegunn/vim-journal'
 
 
 call plug#end()
@@ -242,13 +246,12 @@ autocmd Filetype text set tw=999999 nowrap
 autocmd Filetype text syn match celComment "\[x\].*$"
 autocmd Filetype text hi def link celComment Comment
 
-autocmd Filetype text AnyFoldActivate  " better folding for nested lists
-autocmd Filetype text set foldlevel=0
-autocmd Filetype text hi Folded term=underline
+" autocmd Filetype text AnyFoldActivate  " better folding for nested lists
+" autocmd Filetype text set foldlevel=0
+" autocmd Filetype text hi Folded term=underline
 
 " quicksave
 " this is game-inspired hack. Press f3 to make a 'quicksave' commit.
-
 " Double the same bind, becase shift-f3 mostly doesn't work in terminals
 nnoremap <F3>        : !git add % && git commit -m "quisksave %"
 nnoremap <S-F3>      : !git add . && git commit -m "quisksave"
