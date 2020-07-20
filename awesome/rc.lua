@@ -1,3 +1,7 @@
+-- NOTE(artcz): This is a config for 4.x version, and requires at least 4.3
+-- To install 4.3 on ubuntu 18.04 LTS you can use this PPA:
+--  sudo add-apt-repository ppa:klaus-vormweg/awesome
+--
 -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
