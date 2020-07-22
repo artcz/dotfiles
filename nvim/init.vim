@@ -35,6 +35,7 @@ Plug 'rstacruz/sparkup'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'pseewald/vim-anyfold'
+Plug 'majutsushi/tagbar'
 
 " experimenting with coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
