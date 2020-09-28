@@ -170,7 +170,7 @@ autocmd Filetype python nnoremap <space>B :!isort %<CR>:!black -q %<CR>:e %<CR>
 autocmd Filetype python nnoremap <space>b ggVG:!isort -<CR>ggVG:!black -q -<CR><C-o>
 autocmd Filetype python nnoremap <F2> Iimport pdb; pdb.set_trace()<CR><esc>
 autocmd Filetype python inoremap <F2> <esc>Iimport pdb; pdb.set_trace()<CR><esc>i
-autocmd Filetype python let @d="Oimport pdb; pdb.set_trace()"   " altenrative appraoch
+autocmd Filetype python let @d="Obreakpoint()"   " altenrative appraoch
 
 " using coc to move around the code -- map just like default ctags
 nmap <silent> <C-]> <Plug>(coc-definition)
