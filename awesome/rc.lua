@@ -133,7 +133,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock("%a %b %d %Y, %H:%M:%S", 1)
 
 -- Create custom battery widget
 custom_script_widget = wibox.widget.textbox()
