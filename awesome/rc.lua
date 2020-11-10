@@ -60,6 +60,7 @@ beautiful.init("~/.config/awesome/theme.lua")
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
 screenshot_app = 'spectacle' -- could also be ksnapshot
+screenshot_app = 'flameshot gui' -- using flameshot instead (because it's easier to edit the screenshot afterwards
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -133,6 +134,20 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
+
+-- Create custom battery widget
+custom_script_widget = wibox.widget.textbox()
+custom_script_widget:set_text(" | Loading Custom Script... | ")
+custom_script_widgettimer = timer({ timeout = 5 })
+custom_script_widgettimer:connect_signal("timeout",
+function()
+    fh = assert(io.popen("/home/artur/bin/,awesome_system_info", "r"))
+    custom_script_widget:set_text(" | " .. fh:read("*l") .. " | ")
+    fh:close()
+end
+)
+custom_script_widgettimer:start()
+
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -240,6 +255,7 @@ awful.screen.connect_for_each_screen(function(s)
             mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
+            custom_script_widget,
             s.mylayoutbox,
         },
     }
@@ -291,6 +307,13 @@ globalkeys = gears.table.join(
     awful.key({ modkey              , "Control" } , "l"                                                      , function () awful.tag.incncol(-1, nil, true) end, {description = "decrease the number of columns" , group = "layout"}) ,
     awful.key({ modkey              , }           , "Return"                                                 , function () awful.layout.inc( 1) end        , {description = "select next"                  , group = "layout"})    ,
     awful.key({ modkey              , "Shift"   } , "Return"                                                 , function () awful.layout.inc(-1) end        , {description = "select previous"              , group = "layout"})    ,
+
+    awful.key({}, "#123", function () awful.util.spawn("amixer -q sset PCM 2dB+") end),
+    awful.key({}, "#122", function () awful.util.spawn("amixer -q sset PCM 2dB-") end),
+    awful.key({}, "XF86AudioMute", function () awful.util.spawn("amixer -q -D pulse sset Master toggle") end),
+    awful.key({}, "XF86AudioMicMute", function () awful.util.spawn("amixer set Capture toggle") end),
+    awful.key({}, "XF86MonBrightnessUp", function () awful.util.spawn("sudo /home/artur/bin/,lux plus") end),
+    awful.key({}, "XF86MonBrightnessDown", function () awful.util.spawn("sudo /home/artur/bin/,lux minus") end),
 
 
     awful.key({ modkey }            , "space"     , function () awful.util.spawn("dmenu_run") end            , {description = 'dmenu'            , group='launcher'}),
