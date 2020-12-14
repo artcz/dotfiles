@@ -44,6 +44,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
+" This would be nice, but doesnt seem to work well
+" Also conflicts with ,a
+" Plug 'dominikduda/vim_current_word'
+
 " Journal
 Plug 'junegunn/vim-journal'
 
@@ -254,9 +258,9 @@ autocmd Filetype text hi def link celComment Comment
 " quicksave
 " this is game-inspired hack. Press f3 to make a 'quicksave' commit.
 " Double the same bind, becase shift-f3 mostly doesn't work in terminals
-nnoremap <F3>        : !git add % && git commit -m "quisksave %"
-nnoremap <S-F3>      : !git add . && git commit -m "quisksave"
-nnoremap <space><F3> : !git add . && git commit -m "quisksave"
+nnoremap <F3>        : !git add % && git commit -m "quicksave %"
+nnoremap <S-F3>      : !git add . && git commit -m "quicksave"
+nnoremap <space><F3> : !git add . && git commit -m "quicksave"
 
 nnoremap <F4>        : !git status<CR>
 nnoremap <space><F4> : !git push
@@ -271,5 +275,8 @@ nnoremap <F6> :!dolphin %:p:h
 let g:vim_markdown_auto_insert_bullets = 0
 let g:vim_markdown_new_list_item_indent = 0
 
+" Highlight current word plugin
+hi CurrentWord ctermbg=53
+hi CurrentWordTwins ctermbg=237
 
 source ~/.nvimrc.local
