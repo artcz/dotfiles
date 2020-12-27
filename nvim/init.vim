@@ -43,6 +43,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Tabularize, markdowns, etc
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'ferrine/md-img-paste.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 " This would be nice, but doesnt seem to work well
 " Also conflicts with ,a
