@@ -52,6 +52,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 " Journal
 Plug 'junegunn/vim-journal'
+Plug 'junegunn/goyo.vim'
 
 
 call plug#end()
