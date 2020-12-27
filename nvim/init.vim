@@ -55,7 +55,7 @@ Plug 'junegunn/vim-journal'
 call plug#end()
 
 if vim_plug_just_installed
-	echo "Installing BUndles, please ignore key map error messages"
+	echo "Installing Bundles, please ignore key map error messages"
 	:PlugInstall
 endif
 
@@ -174,7 +174,7 @@ autocmd Filetype python nnoremap <space>B :!isort %<CR>:!black -q %<CR>:e %<CR>
 autocmd Filetype python nnoremap <space>b ggVG:!isort -<CR>ggVG:!black -q -<CR><C-o>
 autocmd Filetype python nnoremap <F2> Iimport pdb; pdb.set_trace()<CR><esc>
 autocmd Filetype python inoremap <F2> <esc>Iimport pdb; pdb.set_trace()<CR><esc>i
-autocmd Filetype python let @d="Obreakpoint()"   " altenrative appraoch
+autocmd Filetype python let @d="Obreakpoint()"   " altenrative approach
 
 " using coc to move around the code -- map just like default ctags
 nmap <silent> <C-]> <Plug>(coc-definition)
@@ -274,9 +274,11 @@ nnoremap <F6> :!dolphin %:p:h
 " Markdown
 let g:vim_markdown_auto_insert_bullets = 0
 let g:vim_markdown_new_list_item_indent = 0
+" Saving the image fiels from clipboard in markdown files.
+autocmd FileType markdown nmap <buffer><silent> <space>v :call mdip#MarkdownClipboardImage()<CR>
 
 " Highlight current word plugin
-hi CurrentWord ctermbg=53
-hi CurrentWordTwins ctermbg=237
+"hi CurrentWord ctermbg=53
+"hi CurrentWordTwins ctermbg=237
 
 source ~/.nvimrc.local
