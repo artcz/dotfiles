@@ -79,3 +79,8 @@ export PATH_PROMPT_COLOR="red"
 # . "$HOME/bin/z.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# This thing below is way too slow to have it run on every start of the shell session, so I'm going to wrap it in a function
+
+function activate_nvm {
+    [ -f ~/.nvm/nvm.sh ] && source ~/.nvm/nvm.sh
+}
