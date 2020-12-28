@@ -117,7 +117,7 @@ map Q gq
 " W saves as well
 cnoreabbrev W w
 " Ctrl-S also saves in normal
-nnoremap <silent> <C-s> :w
+nnoremap <silent> <C-s> :w<CR>
 " E opens as well
 cnoreabbrev E e
 
