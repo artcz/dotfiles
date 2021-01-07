@@ -39,6 +39,10 @@ Plug 'majutsushi/tagbar'
 
 " experimenting with coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" This coc-jedi is the properly working coc-jedi...
+" but it still seems to work worse than pyright for most cases, so using
+" :CocInstall coc-pyright for now.
+"Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 
 " Tabularize, markdowns, etc
 Plug 'godlygeek/tabular'
@@ -62,11 +66,14 @@ if vim_plug_just_installed
 	:PlugInstall
 endif
 
-" :CocInstall coc-python
+" :CocInstall coc-python  -- looks like no longer maintained
+" :CocInstall coc-pyright
 
 
 " for fuzzy finder
 set rtp+=~/.fzf
+let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+let g:fzf_layout = { 'down': '40%' }
 
 
 " Bascics
@@ -183,6 +190,10 @@ autocmd Filetype python let @d="Obreakpoint()"   " altenrative approach
 nmap <silent> <C-]> <Plug>(coc-definition)
 nmap <silent> <2-LeftMouse> <Plug>(coc-definition)
 nmap <silent> <space>d <Plug>(coc-definition)
+
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> <space>d :<C-u>CocList diagnostics<cr>
 """ those two below don't relaly work well
 nmap <silent> <2-RightMouse> <C-o>
 nmap <silent> <C-LeftMouse> <Plug>(coc-definition)
