@@ -317,10 +317,9 @@ globalkeys = gears.table.join(
 
 
     awful.key({ modkey }            , "space"     , function () awful.util.spawn("dmenu_run") end            , {description = 'dmenu'            , group='launcher'}),
-    awful.key({ modkey }            , "v"         , function () awful.util.spawn(terminal) end               , {description = 'launch terminal'  , group='launcher'}),
+    awful.key({ modkey }            , "t"         , function () awful.util.spawn(terminal) end               , {description = 'launch terminal'  , group='launcher'}),
     awful.key({ modkey }            , "r"         , function () awful.util.spawn("konsole") end              , {description = 'launch console'   , group='launcher'}),
-    awful.key({ modkey }            , "t"         , function () awful.util.spawn("commonplace_terminal") end , {description = 'commonplace'      , group='launcher'}),
-    awful.key({ modkey }            , "w"         , function () awful.util.spawn("ipython qtconsole") end    , {description = 'ipython qtconsole', group='launcher'}),
+    awful.key({ modkey }            , "v"         , function () awful.util.spawn("diodon") end               , {description = 'diodon (clipboard manager)'   , group='launcher'}),
     awful.key({ modkey }            , "F12"       , function () awful.util.spawn("slock") end                , {description = 'slock'            , group='launcher'}),
     awful.key({                   } , "Print"     , function () awful.util.spawn(screenshot_app) end         , {description = 'screenshot'       , group='launcher'}),
     awful.key({ modkey              , "Control" } , "r"                                                      , awesome.restart, {description = "reload awesome", group = "awesome"})   ,
