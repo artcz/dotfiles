@@ -1,5 +1,6 @@
 fpath=( "$HOME/.zfunctions" $fpath)
 path=($path "$HOME/bin/")
+path=($path "$HOME/.local/bin/")
 autoload -U promptinit && promptinit
 #prompt pure
 export LC_ALL="en_US.utf8"
