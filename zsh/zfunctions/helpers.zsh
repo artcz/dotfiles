@@ -2,9 +2,9 @@ function znajdz_i_zamien {
     find . -type f -exec sed -e "s=${1}=${2}=g" -i {} \;
 }
 
-function f {
-    find . -iname '*${1}*'
-}
+#function f {
+#    find . -iname '*${1}*'
+#}
 
 function wypal_obraz {
     cdrecord -v dev=/dev/sr0 -data ${1}

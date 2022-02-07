@@ -3,7 +3,7 @@ path=($path "$HOME/bin/")
 path=($path "$HOME/.local/bin/")
 autoload -U promptinit && promptinit
 #prompt pure
-export LC_ALL="en_US.utf8"
+export LC_ALL="en_GB.utf8"
 
 # HISTORY
 export HISTFILE="$HOME/.zsh_history"
@@ -33,6 +33,10 @@ alias ,asd='ipython'
 alias mplayer='mpv'
 alias v='nvim -S .vimrc'
 alias v.='nvim . -S .vimrc'
+alias f='fg'
+alias d='docker'
+alias dc='docker-compose'
+alias k='kubectl'
 
 # fixme, use something more generic than higlight? maybe pygmentize?
 alias ccat='highlight -O ansi'
@@ -67,8 +71,11 @@ fi
 export USER_PROMPT_COLOR="green"
 export PATH_PROMPT_COLOR="red"
 
+export EDITOR=vim
+
 # For icons in QT5 apps
-export XDG_CURRENT_DESKTOP=gnome
+# NOTE: this should be set in /etc/X11/Xsession.d instead
+# export XDG_CURRENT_DESKTOP=gnome
 
 
 # source
@@ -88,4 +95,5 @@ export XDG_CURRENT_DESKTOP=gnome
 
 function activate_nvm {
     [ -f ~/.nvm/nvm.sh ] && source ~/.nvm/nvm.sh
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 }
