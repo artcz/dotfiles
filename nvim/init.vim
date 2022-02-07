@@ -24,7 +24,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'https://github.com/vim-scripts/Mark--Karkat'
 Plug 'https://github.com/endel/vim-github-colorscheme'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes'
-Plug 'https://github.com/nvie/vim-flake8'
+"Plug 'https://github.com/nvie/vim-flake8'
 Plug 'vim-scripts/indentpython.vim'
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'ruanyl/vim-gh-line'
@@ -57,6 +57,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " Journal
 Plug 'junegunn/vim-journal'
 Plug 'junegunn/goyo.vim'
+
+" Terraform
+Plug 'hashivim/vim-terraform'
 
 
 call plug#end()
@@ -176,9 +179,9 @@ autocmd Filetype json vnoremap <silent> B :!python3 -m json.tool -<CR>
 
 " Python
 autocmd Filetype python setlocal expandtab ts=4 sw=4 sts=4 tw=79
-autocmd BufWritePost *.py call Flake8()
+"autocmd BufWritePost *.py call Flake8()
 autocmd Filetype python vnoremap <silent> i :!isort -<CR>
-let g:flake8_show_in_file=1
+"let g:flake8_show_in_file=1
 autocmd Filetype python vnoremap B :!Black -<CR>
 autocmd Filetype python nnoremap <space>B :!isort %<CR>:!black -q %<CR>:e %<CR>
 autocmd Filetype python nnoremap <space>b ggVG:!isort -<CR>ggVG:!black -q -<CR><C-o>
