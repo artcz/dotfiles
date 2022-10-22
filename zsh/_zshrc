@@ -30,13 +30,13 @@ alias g='git'
 alias ipy='ipython'
 alias asd='ipython'
 alias ,asd='ipython'
-alias mplayer='mpv'
 alias v='nvim -S .vimrc'
 alias v.='nvim . -S .vimrc'
 alias f='fg'
 alias d='docker'
 alias dc='docker-compose'
 alias k='kubectl'
+alias bat='batcat'
 
 # fixme, use something more generic than higlight? maybe pygmentize?
 alias ccat='highlight -O ansi'
@@ -87,8 +87,9 @@ export EDITOR=vim
 . "$HOME/.zfunctions/git.zsh"
 . "$HOME/.zfunctions/helpers.zsh"
 . "$HOME/.zfunctions/python.zsh"
+. "$HOME/.zfunctions/current.zsh"
 # . "$HOME/.zfunctions/monitor_management.zsh"
-# . "$HOME/bin/z.sh"
+ #. "$HOME/bin/z.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # This thing below is way too slow to have it run on every start of the shell session, so I'm going to wrap it in a function
