@@ -184,7 +184,9 @@ autocmd Filetype python vnoremap <silent> i :!isort -<CR>
 "let g:flake8_show_in_file=1
 autocmd Filetype python vnoremap B :!Black -<CR>
 autocmd Filetype python nnoremap <space>B :!isort %<CR>:!black -q %<CR>:e %<CR>
-autocmd Filetype python nnoremap <space>b ggVG:!isort -<CR>ggVG:!black -q -<CR><C-o>
+" Note: there used to be <C-o> at the end. It's a good idea most of the time,
+" but it sometimes breaks so I removed it for testing purposes (2022-10-16)
+autocmd Filetype python nnoremap <space>b ggVG:!isort -<CR>ggVG:!black -q -<CR>
 autocmd Filetype python nnoremap <F2> Iimport pdb; pdb.set_trace()<CR><esc>
 autocmd Filetype python inoremap <F2> <esc>Iimport pdb; pdb.set_trace()<CR><esc>i
 autocmd Filetype python let @d="Obreakpoint()"   " altenrative approach
